@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <script>
+    window.onload = function(){
+      document.getElementById('a').onclick = function(){
+        var request = new XMLHttpRequest()
+        var url = this.href + "?time=" + new Data()
+        var method = 'GET'
+        request.open(method, url)
+        request.send(null)
+        request.onreadystatechange = function(){
+          if(request.readyState === 4){
+            if(request.status === 200 || request.status === 304){
+              alert(request.responseText)
+            }
+          }
+        }
+        return false
+      }
+    }
+  </script>
+
+</head>
+<body>
+  <a href="ajax.txt" id="a">ajax</a>
+</body>
+</html>
