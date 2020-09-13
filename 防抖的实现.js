@@ -31,10 +31,11 @@ function debounce(func, wait = 50, immediate = true) {
         context = this
         args = params
       }
+    // 如果已有延迟执行函数（later），调用的时候清除原来的并重新设定一个
+    // 这样做延迟函数会重新计时
     } else {
       clearTimeout(timer)
       timer = later()
     }
-    // 如果有了， 重置 timer
   }
 }
