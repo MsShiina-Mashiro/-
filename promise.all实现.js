@@ -8,7 +8,7 @@ const PromiseAll = (promises) => {
     next()
 
     function next() {
-      arr[i].then((res) => {
+      promises[i].then((res) => {
         aResult.push(res)
         i++
         if (i === promises.length) {
