@@ -133,7 +133,7 @@ Array.prototype.fill.apply(arr, 7);  // 用原型链来调用也是不行
 
 ## 通过core-js实现按需引入polyfill或runtime
 
-core-js包才上述的polyfill、runtime的核心，因为polyfill和runtime其实都只是对core-js和regenerator的再封装，方便使用而已。
+core-js包是上述的polyfill、runtime的核心，因为polyfill和runtime其实都只是对core-js和regenerator的再封装，方便使用而已。
  但是polyfill和runtime都是整体引入的，不能做细粒度的调整，如果我们的代码只是用到了小部分ES6而导致需要使用polyfill和runtime的话，会造成代码体积不必要的增大（runtime的影响较小）。所以，按需引入的需求就自然而然产生了，这个时候就得依靠core-js来实现了。
 
 #### core-js的组织结构
