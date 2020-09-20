@@ -19,7 +19,7 @@
 
 接下来我们通过一个例子，说明父组件如何向子组件传递值：在子组件Users.vue中如何获取父组件App.vue中的数据 `users:["Henry","Bucky","Emily"]`
 
-```
+```html
 //App.vue父组件
 <template>
   <div id="app">
@@ -68,7 +68,7 @@ export default {
 
 ![子组件向父组件传值之前](https://segmentfault.com/img/remote/1460000019208630)
 
-```
+```html
 // 子组件
 <template>
   <header>
@@ -127,7 +127,7 @@ export default {
 
 #### 1.具体实现方式：
 
-```
+```js
     var Event=new Vue();
     Event.$emit(事件名,数据);
     Event.$on(事件名,data => {});
@@ -137,7 +137,7 @@ export default {
 
 假设兄弟组件有三个，分别是A、B、C组件，C组件如何获取A或者B组件的数据
 
-```
+```html
 <div id="itany">
     <my-a></my-a>
     <my-b></my-b>
@@ -241,7 +241,7 @@ Vuex实现了一个单向数据流，在全局拥有一个State存放数据，�
 
 vuex 是 vue 的状态管理器，存储的数据是响应式的。但是并不会保存起来，刷新之后就回到了初始状态，**具体做法应该在vuex里数据改变的时候把数据拷贝一份保存到localStorage里面，刷新之后，如果localStorage里有保存的数据，取出来再替换store里的state。**
 
-```
+```js
 let defaultCity = "上海"
 try {   // 用户关闭了本地存储功能，此时在外层加个try...catch
   if (!defaultCity){
@@ -266,7 +266,7 @@ export default new Vuex.Store({
 
 这里需要注意的是：由于vuex里，我们保存的状态，都是数组，而localStorage只支持字符串，所以需要用JSON转换：
 
-```
+```js
 JSON.stringify(state.subscribeList);   // array -> string
 JSON.parse(window.localStorage.getItem("subscribeList"));    // string -> array 
 ```
@@ -282,7 +282,7 @@ JSON.parse(window.localStorage.getItem("subscribeList"));    // string -> array
 
 接下来我们看个跨级通信的例子：
 
-```
+```html
 // index.vue
 <template>
   <div>
@@ -388,7 +388,7 @@ Vue2.2.0新增API,这对选项需要一起使用，**以允许一个祖先组件
 
 假设有两个组件： A.vue 和 B.vue，B 是 A 的子组件
 
-```
+```js
 // A.vue
 export default {
   provide: {
@@ -420,7 +420,7 @@ export default {
 
 ![image](https://segmentfault.com/img/remote/1460000019208634)
 
-```
+```jsx
 // A 组件 
 <div>
       <h1>A 组件</h1>
@@ -500,7 +500,7 @@ export default {
 
 需要注意的是：这两种都是直接得到组件实例，使用后可以直接调用组件的方法或访问数据。我们先来看个用 `ref`来访问组件的例子：
 
-```
+```js
 // component-a 子组件
 export default {
   data () {
@@ -531,7 +531,7 @@ export default {
 
 不过，**这两种方法的弊端是，无法在跨级或兄弟间通信**。
 
-```
+```html
 // parent.vue
 <component-a></component-a>
 <component-b></component-b>
