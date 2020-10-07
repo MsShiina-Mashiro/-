@@ -222,3 +222,7 @@ let p = onWatch(
 p.a = 2 // bind `value` to `2`
 p.a // -> Get 'a' = 2
 ```
+
+## 面试话术
+vue采取数据劫持和发布者订阅者模式，使用`Object.defineProperty()`来劫持各个属性的getter和setter，在数据变化时，发布消息给依赖收集器，通知观察者，做出对应的回调函数，去更新视图。
+
